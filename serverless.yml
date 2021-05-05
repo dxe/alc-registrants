@@ -1,0 +1,32 @@
+service: alc-registrants
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  lambdaHashingVersion: 20201221
+  runtime: go1.x
+  region: us-west-2
+  stage: prod
+  environment:
+    EVENTBRITE_TOKEN: ${ssm:eventbrite_token~true}
+
+package:
+ individually: true
+ exclude:
+   - ./**
+
+functions:
+  totalRegistrants:
+    name: alc-registrants-total
+    description: Gets and displays the total number of ALC registrants.
+    handler: bin/totalRegistrants
+    package:
+      include:
+        - ./bin/totalRegistrants
+    events:
+      - http:
+          path: alc-registrants/total
+          method: get
+    memorySize: 128
+    timeout: 15
