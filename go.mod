@@ -2,6 +2,4 @@ module github.com/dxe/alc-registrants
 
 go 1.16
 
-require (
-	github.com/aws/aws-lambda-go v1.22.0
-)
+require github.com/aws/aws-lambda-go v1.22.0
