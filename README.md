@@ -1,7 +1,7 @@
 # alc-registrants
 A simple web app to display the total number of ALC 2021 registrants.
 
-Requires Go & the Serverless framework. Deployed on AWS Lambda.
+Requires Go & the Serverless framework. Deployed on AWS Lambda & API Gateway.
 
 ```make build``` builds locally.
 
