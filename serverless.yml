@@ -5,7 +5,8 @@ frameworkVersion: '2'
 provider:
   name: aws
   lambdaHashingVersion: 20201221
-  runtime: go1.x
+  runtime: provided.al2023
+  architecture: arm64
   region: us-west-2
   stage: prod
   environment:
@@ -20,10 +21,9 @@ functions:
   totalRegistrants:
     name: alc-registrants-total
     description: Gets and displays the total number of ALC registrants.
-    handler: bin/totalRegistrants
+    handler: bootstrap
     package:
-      include:
-        - ./bin/totalRegistrants
+      artifact: bin/totalRegistrants.zip
     events:
       - http:
           path: alc-registrants/total
